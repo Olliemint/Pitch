@@ -2,3 +2,8 @@
     margin: 20px;
 
 }
+.vote{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
