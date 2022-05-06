@@ -2,7 +2,7 @@
 
 {% block content %}
     {% for pitch in pitches %}
-    <div class="card" style="width: 20rem;">
+    <div class="card" style="width: 20rem;" id="cards">
         <div class="card text-center">
             <div class="card-header">
             <p>{{pitch.title}}</p>
@@ -12,6 +12,10 @@
             </div>
             <div class="card-footer text-muted">
             <p>Posted by: {{pitch.author}}</p>
+            </div>
+            <div class="vote">
+                <li><i class="fa-solid fa-thumbs-up"></i></li>
+                <li><i class="fa-solid fa-thumbs-down"></i></li>
             </div>
         </div>
 
