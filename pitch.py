@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,url_for
 
 app = Flask(__name__)
 
@@ -27,7 +27,7 @@ pitches =[
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('home.html',pitches=pitches)
 
 
 if __name__ == '__main__':
