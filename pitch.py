@@ -2,6 +2,8 @@ from flask import Flask, render_template,url_for
 
 app = Flask(__name__)
 
+app.config['SECRET_KEY']= '56f0def8068b3dfc'
+
 pitches =[
     {
         'author':'Mike will',
