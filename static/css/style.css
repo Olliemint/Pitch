@@ -18,5 +18,23 @@ html{
     border: 1px solid #dddddd;
     border-radius: 3px;
     margin-bottom: 20px;
+    width: 40%;
+   
+  }
+  .logo{
+      display: flex;
+      justify-content: center;
+  }
+  .logo img{
+      height: 100px;
+      width: 100px;
+  }
+  #loginp{
+      display: flex;
+      justify-content: center;
+      align-content: center;
+  }
+  #leg{
+      text-align: center;
   }
   
