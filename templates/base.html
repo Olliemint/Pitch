@@ -22,14 +22,14 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <div class="homea">
+                
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
                   <a class="nav-link" href="#">About</a>
-                </div>
-                  <div class="lgs">
+
+                  
                   <a class="nav-link" href="{{url_for('login')}}">Login</a>
-                  <a class="nav-link" href="#">Register</a>
-                </div>
+                  <a class="nav-link" href="{{url_for('register')}}">Register</a>
+                
 
                 </div>
               </div>
@@ -41,6 +41,20 @@
       
 
     <div class="container" >
+       {% with messages = get_flashed_messages(with_categories = true) %}
+           {% if messages  %} 
+
+             {% for category, message in messages %}
+                <div class="alert alert-{{category}}">
+                   {{ message }}
+                </div>
+             {% endfor %}
+
+           {% endif %}
+
+       {% endwith %}
+        
+
     {% block content %}
 
     {% endblock %}
