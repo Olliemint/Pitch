@@ -27,7 +27,7 @@ class Pitch(db.Model):
     title =db.Column(db.String(100), nullable=False)
     posted = db.Column(db.DateTime,nullable = False, default = date.ctime)
     pitch = db.Column(db.Text, nullable = False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user_id'), nullable = False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
     
     
     
