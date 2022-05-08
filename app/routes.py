@@ -1,17 +1,8 @@
-from flask import Flask, render_template,url_for,flash,redirect
-from form import RegistrationForm,LoginForm
-from flask_sqlalchemy import SQLAlchemy
+from app import app
+from flask import render_template,url_for,flash,redirect
+from app.form import RegistrationForm,LoginForm
 
-app = Flask(__name__)
-
-app.config['SECRET_KEY']= '56f0def8068b3dfc'
-app.config['SQLAlCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-db = SQLAlchemy(app)
-
-
-    
-    
-
+from app.models import User,Pitch
 
 
 
@@ -59,17 +50,19 @@ def register():
     return render_template('register.html',form= form)
 
 
-@app.route('/login')
+@app.route('/login',methods=['GET','POST'])
 def login(): 
     
     form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data == 'furywrld5@gmail.com' and form.password.data == 'password':
+            flash('Logged in succesfully','success')
+            return redirect(url_for('home'))        
+         
+            
+        
+        else:
+            flash('Login error!!. Enter correct username and password','danger')
+    
     
     return render_template('login.html',form = form)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
-    
-    
