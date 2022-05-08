@@ -1,10 +1,21 @@
 
+from enum import unique
 from flask import Flask, render_template,url_for,flash,redirect
 from form import RegistrationForm,LoginForm
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY']= '56f0def8068b3dfc'
+app.config['SQLAlCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    id =db.Column(db.Integer,primary_key=True)
+    username =db.Column(db.String(15),unique=True, nullable=False)
+    email =db.Column(db.String(100),unique=True, nullable=False)
+
+
 
 pitches =[
     {
