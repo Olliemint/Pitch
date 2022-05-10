@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+*{
+   
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+   
+}
 html{
     scroll-behavior: smooth;
 }
@@ -36,5 +44,13 @@ html{
   }
   #leg{
       text-align: center;
+  }
+  .image img{
+      height: 80px;
+      width: 77px;
+      border-radius: 50%;
+  }
+  #acct{
+      display: flex;
   }
   
