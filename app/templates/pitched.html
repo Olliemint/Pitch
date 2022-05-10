@@ -1,0 +1,58 @@
+{%extends 'base.html' %}
+
+{% block content %}
+    
+    <div class="card" style="width: 20rem;" id="cards">
+        <div class="card text-center">
+            <div class="card-header">
+             <img class="rounded-circle" src="{{ url_for('static',filename='profiles/' + pitch.author.avatar) }}" alt="">   
+            <p>{{pitch.title}}</p>
+
+                {% if pitch.author == current_user %}
+                    <div>
+                       <a class="btn btn-primary btn-sm m-1" href="{{ url_for('update_pitch', pitch_id=pitch.id)}}">Update</a> 
+                       <button type="button" class="btn btn-danger btn-sm m-1" data-bs-toggle="modal" data-bs-target="#DeleteModal">Delete</button>
+                    </div>
+                {% endif %}
+
+            </div>
+            <div class="card-body">
+            <p class="card-text">{{pitch.pitch}}</p>
+            <div class="vote">
+                <i class="fa-solid fa-thumbs-up"></i>
+                <i class="fa-solid fa-thumbs-down"></i>
+            </div>
+            </div>
+            <div class="card-footer text-muted">
+            <p>Posted by: {{pitch.author.username}}</p>
+            <p>On: {{ pitch.posted.strftime('%Y-%m-%d') }}</p>
+            </div>
+            
+        </div>
+
+    </div>
+
+  
+        
+        <!-- Modal -->
+        <div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="DeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="DeleteModalLabel">Delete Pitch?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+               
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="{{ url_for('delete_pitch',pitch_id =pitch.id ) }}" method="POST">
+                    <input class="btn btn-danger" type="submit" value="Delete">
+
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+
+{% endblock %}

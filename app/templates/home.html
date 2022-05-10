@@ -5,18 +5,21 @@
     <div class="card" style="width: 20rem;" id="cards">
         <div class="card text-center">
             <div class="card-header">
-            <p>{{pitch.title}}</p>
+             <img class="rounded-circle" src="{{ url_for('static',filename='profiles/' + pitch.author.avatar) }}" alt="">   
+            <p><a href="{{ url_for('pitched',pitch_id =pitch.id) }}">{{pitch.title}}</a></p>
             </div>
             <div class="card-body">
             <p class="card-text">{{pitch.pitch}}</p>
-            </div>
-            <div class="card-footer text-muted">
-            <p>Posted by: {{pitch.author}}</p>
-            </div>
             <div class="vote">
                 <i class="fa-solid fa-thumbs-up"></i>
                 <i class="fa-solid fa-thumbs-down"></i>
             </div>
+            </div>
+            <div class="card-footer text-muted">
+            <p>Posted by: {{pitch.author.username}}</p>
+            <p>On: {{ pitch.posted.strftime('%Y-%m-%d') }}</p>
+            </div>
+            
         </div>
 
     </div>
