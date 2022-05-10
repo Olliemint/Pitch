@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField,FileAllowed
 from flask_login import current_user
-from wtforms import StringField,PasswordField,SubmitField,BooleanField
+from wtforms import StringField,PasswordField,SubmitField,BooleanField,TextAreaField
 from wtforms.validators import DataRequired,Length,Email,EqualTo,ValidationError
 from app.models import User
 
@@ -63,4 +63,14 @@ class UpdateAccountForm(FlaskForm):
         if email.data != current_user.email:
             user = User.query.filter_by(email=email.data).first()
             if user:
-                raise ValidationError('That email is already taken. Please choose another username')         
+                raise ValidationError('That email is already taken. Please choose another username') 
+            
+            
+            
+
+
+class PitchForm(FlaskForm):
+    title = StringField('Category', validators=[DataRequired()])
+    pitch = TextAreaField('Pitch',validators=[DataRequired()])
+    submit = SubmitField('Add')
+                        

@@ -3,7 +3,7 @@ import secrets
 from PIL import Image
 from app import app,db,bcrypt
 from flask import render_template,url_for,flash,redirect,request
-from app.form import RegistrationForm,LoginForm,UpdateAccountForm
+from app.form import RegistrationForm,LoginForm,UpdateAccountForm,PitchForm
 from app.models import User,Pitch
 from flask_login import login_user,current_user,logout_user,login_required
 
@@ -122,6 +122,17 @@ def account():
     profile_img = url_for('static',filename ='profiles/' + current_user.avatar)
     return render_template('account.html',profile_img = profile_img, form=form)    
 
+
+@app.route('/pitch/new',methods=['GET','POST'])
+@login_required
+def pitch():
+    form = PitchForm()
+    if form.validate_on_submit():
+        flash('Your pitch has been added!','success')
+        return redirect(url_for('home'))
+    
+    return render_template('newpitch.html',form= form)    
+    
 
     
         
