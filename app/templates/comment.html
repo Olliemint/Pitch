@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content-section">
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="comment1">
+            <img src="../static/assets/Screenshot from 2022-05-11 22-40-21.png" alt="">
+        </div>
+        <fieldset class="form-group">
+            
+         
+            <div class="form-group">
+                {{ form.comment.label(class ="form-control-label")}}
+                {% if form.comment.errors %}
+                    {{ form.comment(class ="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.comment.errors %}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+
+                {% else %}    
+                   {{ form.comment(class ="form-control form-control-lg")}}
+                    
+                
+                {% endif %}
+
+            </div>
+     
+        </fieldset>
+        <div class="form-group">
+             {{ form.submit(class = "btn btn-success") }}
+        </div>
+        
+
+    </form>
+
+   
+
+</div>
+
+{% endblock content %}

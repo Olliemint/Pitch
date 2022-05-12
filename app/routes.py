@@ -4,7 +4,7 @@ import secrets
 from PIL import Image
 from app import app,db,bcrypt
 from flask import render_template,url_for,flash,redirect,request,abort
-from app.form import RegistrationForm,LoginForm,UpdateAccountForm,PitchForm
+from app.form import RegistrationForm,LoginForm,UpdateAccountForm,PitchForm,CommentForm
 from app.models import User,Pitch
 from flask_login import login_user,current_user,logout_user,login_required
 
@@ -14,7 +14,8 @@ from flask_login import login_user,current_user,logout_user,login_required
 @app.route('/')
 @app.route('/home')
 def home():
-    pitches = Pitch.query.all()
+    page = request.args.get('page',1,type=int)
+    pitches = Pitch.query.order_by(Pitch.posted.desc()).paginate(page=page, per_page=3)
     return render_template('home.html',pitches=pitches)
 
 @app.route('/about')
@@ -154,6 +155,20 @@ def delete_pitch(pitch_id):
     flash('Your pitch has been deleted','success')
     
     return redirect(url_for('home'))
+
+
+@app.route('/comment/new',methods=['GET','POST'])
+@login_required
+def comment():
+    form = CommentForm()
+    if form.validate_on_submit():
+        flash('Your comment has ben posted','success')
+        
+    
+        return redirect(url_for('home'))    
+    
+    
+    return render_template('comment.html', form =form)
        
         
        

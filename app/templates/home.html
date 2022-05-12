@@ -1,28 +1,66 @@
 {%extends 'base.html' %}
 
 {% block content %}
-    {% for pitch in pitches %}
-    <div class="card" style="width: 20rem;" id="cards">
-        <div class="card text-center">
-            <div class="card-header">
-             <img class="rounded-circle" src="{{ url_for('static',filename='profiles/' + pitch.author.avatar) }}" alt="">   
-            <p><a href="{{ url_for('pitched',pitch_id =pitch.id) }}">{{pitch.title}}</a></p>
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded" id="home">
+        <div class="flex">
+        {% for pitch in pitches.items %}
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded " style="width: 20rem;" id="cards">
+            <div class="card text-center">
+                <div class="header">
+                    <div>
+                <img class="rounded-circle" src="{{ url_for('static',filename='profiles/' + pitch.author.avatar) }}" alt="">   
             </div>
-            <div class="card-body">
-            <p class="card-text">{{pitch.pitch}}</p>
-            <div class="vote">
-                <i class="fa-solid fa-thumbs-up"></i>
-                <i class="fa-solid fa-thumbs-down"></i>
-            </div>
-            </div>
-            <div class="card-footer text-muted">
-            <p>Posted by: {{pitch.author.username}}</p>
-            <p>On: {{ pitch.posted.strftime('%Y-%m-%d') }}</p>
+            <div>
+                <ul>
+                    <li><strong>{{pitch.author.username}}</strong></li>
+                    <li class="text-muted">{{ pitch.posted.strftime('%Y-%m-%d') }}</li>
+                </ul>
+               
             </div>
             
+                </div>
+                <hr>
+                <div class="card-body">
+                <p><a href="{{ url_for('pitched',pitch_id =pitch.id) }}">{{pitch.title}}</a></p>
+                
+                <p class="card-text">{{pitch.pitch}}</p>
+                <div class="vote">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                    <i class="fa-solid fa-thumbs-down"></i>
+                </div>
+                </div>
+                <div class="card-footer text-muted">
+               
+                <button type="submit" class="btn btn-outline-primary"><a href="{{ url_for('comment') }}">Comment</a></button>
+                </div>
+                
+            </div>
+
         </div>
+        {% endfor %}
+    
 
     </div>
+
+
+    </div>
+
+    {% for page_num in pitches.iter_pages()  %}
+      
+        {% if page_num %}
+            {% if pitches.page == page_num %}
+              <a class="btn btn-primary" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+            {% else %}
+              <a class="btn btn-outline-primary" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+            {% endif %}
+        {% else %}
+
+          ..
+
+        {% endif %}
+
     {% endfor %}
+
+
 
 {% endblock %}

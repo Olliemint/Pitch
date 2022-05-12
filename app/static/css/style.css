@@ -9,11 +9,21 @@
 html{
     scroll-behavior: smooth;
 }
+body{
+    background-color: #0A192F;
+}
 
 #cards{
     margin: 20px;
+   
 
 }
+.navbar-nav li{
+    font-weight: 700;
+    font-size: 22px;
+    color: #ffffff !important;
+}
+
 .vote{
     display: flex;
     justify-content: center;
@@ -40,7 +50,9 @@ html{
   #loginp{
       display: flex;
       justify-content: center;
-      align-content: center;
+      align-items: center;
+      margin-top: 10%;
+     
   }
   #leg{
       text-align: center;
@@ -53,4 +65,56 @@ html{
   #acct{
       display: flex;
   }
+  #home{
+      margin-top: 5%;
+      background-color: #142D3E !important;
+  }
+ 
+  #home .card{
+      border-radius: 5%;
+      
+
+  }
+  #home .flex{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+  }
+  .header img{
+      height: 75px;
+      width: 77px;
+  }
+  .header{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .header li{
+      list-style: none;
+  }
+  #regis{
+      display: flex;
+      justify-content: center;
+      margin: 10%;
+  }
+  #inlineb a{
+      display: inline-block;
+  }
+  .pagelogo{
+      height: 77px;
+      width: 80px;
+  }
+  .comment1 img{
+      height: 150px;
+      width: 300px;
+     
+  }
+  .comment1{
+    display: flex;
+    justify-content: center;
+  }
+  
+
+
   
