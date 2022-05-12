@@ -11,8 +11,13 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #24494F;"">
-    <div class="container-fluid">
+    <div class="container-fluid" id="cont">
+      <div class="logodiv">
       <img class="pagelogo" src="../static/assets/1651930619016_1651930610313_p logo.png" alt="">
+      <div class="top">
+      <h2><span>Pit</span>ch</h2>
+    </div>
+    </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,7 +25,7 @@
         <ul class="navbar-nav"  id="navlist">
           
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
+            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}"><span><i class="fa-solid fa-house" style="color: #476FFD;"></i></span> Home</a>
             
           </li>
           <li class="nav-item">
@@ -33,9 +38,10 @@
                       
                       <a class="nav-link" href="{{url_for('account')}}">Account</a>
 
-                      <a class="nav-link btn btn-primary" href="{{url_for('logout')}}">Logout</a>
+                     <button class="btn btn-outline-primary"><a href="{{url_for('logout')}}">Logout</a></button> 
                        
                     {% else %}
+                    
                       <a class="nav-link" href="{{url_for('login')}}">Login</a>
                       <a class="nav-link" href="{{url_for('register')}}">Register</a>
                     {% endif %} 
@@ -83,7 +89,7 @@
 
 
 
-
+ <script src="{{url_for('static', filename='js/script.js')}}"></script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>   
 </body>
 </html>

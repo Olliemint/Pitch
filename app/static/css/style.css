@@ -114,6 +114,35 @@ body{
     display: flex;
     justify-content: center;
   }
+  #navbarNavDropdown{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .logodiv{
+      display: flex;
+      position: relative;
+     
+  }
+  .top{
+      position: relative;
+      margin-top: 18px;
+      color: #ffffff;
+  }
+  #cont a{
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+  }
+  #cont a:hover{
+      color: crimson;
+  }
+  .top span{
+      text-decoration: underline;
+      text-decoration-color: crimson;
+      text-decoration-thickness: 3px;
+      color: mediumvioletred;
+  }
   
 
 
